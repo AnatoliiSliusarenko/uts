@@ -2,71 +2,63 @@
 //------Global variables----------------------------------------------------------------------------------------------------------
 $tileWidth = 128;
 $spaceWidth = 10;
-$types = array(
-	'round' => array('tiles' => 1, 'tileHC' => 1),
-	'horsquare' => array('tiles' => 2, 'tileHC' => 2),
-	'bigsquare' => array('tiles' => 4, 'tileHC' => 4),
-	'square' => array('tiles' => 1, 'tileHC' => 1),
-	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 5)
+$mainTypes = array(
+	'round' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'tenplate' => array(0 => array(1))),
+	'horsquare' => array('tiles' => 2, 'tileHC' => 2, 'tileVC' => 1, 'template' => array(0 => array(1, 1))),
+	'bigsquare' => array('tiles' => 4, 'tileHC' => 2, 'tileVC' => 2, 'template' => array(0 => array(1, 1), 1 => array(1,1))),
+	'square' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
+	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0)))
 );
 //------Recieved------------------------------------------------------------------------------------------------------------------
-$tiles = isset($_GET['tiles']) ? $_GET['tiles'] : array();
+$contentTiles = isset($_GET['tiles']) ? $_GET['tiles'] : array();
 $windowWidth = isset($_GET['windowWidth']) ? $_GET['windowWidth'] : 0;
 //--------------------------------------------------------------------------------------------------------------------------------
 
-function getMatrixProperties(&$_tiles, $_types)
+function getMainMatrixProperties(&$tiles, $types)
 {
 	$needTiles = 0;
 	$minColCount = 1;
 	
-	foreach ($_tiles as $i=>$tile)
+	foreach ($tiles as $i=>$tile)
 	{
-		$_tiles[$i]['located'] = false;
-		$needTiles += $_types[$tile['type']]['tiles'];
-		if ($_types[$tile['type']]['tileHC']>$minColCount) $minColCount = $_types[$tile['type']]['tileHC'];
+		$tiles[$i]['located'] = false;
+		$needTiles += $types[$tile['type']]['tiles'];
+		if ($types[$tile['type']]['tileHC']>$minColCount) $minColCount = $types[$tile['type']]['tileHC'];
 	}
 	
 	return array('needTiles' => $needTiles, 'minColCount' => $minColCount);
 }
 
 
-function createMatrix($_windowW, $_tileW, $_spaceW, &$_matrixProperties)
+function createMatrix($cc, $rc)
 {
-	$colCount = floor(($_windowW+$_spaceW)/($_tileW+$_spaceW));
+	$matrix = array();
 	
-	if ($colCount < $_matrixProperties['minColCount']) $colCount = $_matrixProperties['minColCount'];
-
-	$rowCount = ceil($_matrixProperties['needTiles']/$colCount);
-	
-	$_matrix = array();
-	
-	for ($i=0; $i<$rowCount; $i++)
+	for ($i=0; $i<$rc; $i++)
 	{
-		$_matrix[$i] = array();
+		$matrix[$i] = array();
 	
-		for ($j=0; $j<$colCount; $j++)
+		for ($j=0; $j<$cc; $j++)
 		{
-			$_matrix[$i][$j] = 0;
+			$matrix[$i][$j] = 0;
 		}
 	}
 	
-	$_matrixProperties['colCount'] = $colCount;
-	$_matrixProperties['rowCount'] = $rowCount;
-	return $_matrix;
+	return $matrix;
 }
-
-function sortTilesByHorC(&$_tiles, $_types)
+//----sort tiles array by tile horizontal count
+function sortTilesByHC(&$tiles, $types)
 {
 	$sortTiles = array();
 	
-	while ($_tiles != array())
+	while ($tiles != array())
 	{
-		$max = $_tiles[0];
+		$max = $tiles[0];
 		$maxInd = 0;
 		
-		foreach ($_tiles as $i=>$tile)
+		foreach ($tiles as $i=>$tile)
 		{
-			if ($_types[$tile['type']]['tileHC']>$_types[$max['type']]['tileHC']) 
+			if ($types[$tile['type']]['tileHC']>$types[$max['type']]['tileHC']) 
 			{
 				$max =  $tile;
 				$maxInd = $i;
@@ -74,43 +66,85 @@ function sortTilesByHorC(&$_tiles, $_types)
 		}
 		
 		$sortTiles[] = $max;
-		unset($_tiles[$maxInd]);
+		unset($tiles[$maxInd]);
 	}
 	
-	$_tiles = $sortTiles;
+	$tiles = $sortTiles;
 }
 
-function locateTiles(&$_tiles, &$_matrix, $_matrixProperties, $_types)
+function locateTiles(&$tiles, &$matrix, $cc, $rc, $types)
 {
-	$colCount = $_matrixProperties['colCount'];
-	$rowCount = $_matrixProperties['rowCount'];
-	
-	foreach ($_tiles as $i=>$tile)
+	foreach ($tiles as $i=>$tile)
 	{
-		$_tiles[$i] = placeTile($tile, $_matrix, $_types, $colCount, $rowCount);
+		$tiles[$i] = placeTile($tile, $matrix, $types, $cc, $rc);
 	}
 }
 
-function placeTile($_tile, &$_matrix, $_types, $cc, $rc)
+function placeTile($tile, &$matrix, $types, $cc, $rc)
 {
-	$tileType = $_tile['type'];
-	$tileHC = $_types[$tileType]['tileHC'];
+	$tileType = $tile['type'];
+	$tileHC = $types[$tileType]['tileHC'];
+	$tileVC = $types[$tileType]['tileVC'];
+	$tileTemplate = $types[$tileType]['template'];
 	
+	//----change matrix row count
+	if ($rc < $tileVC)
+	{
+		$diff = $tileVC - $rc;
+		
+		for ($i = $rc; $i<$tileVC; $i++)
+		{
+			$matrix[$i] = array();
+			
+			for ($j=0; $j<$cc; $j++)
+			{
+				$matrix[$i][$j] = 0;
+			}
+		}
+	}
 	
+	$bufMatrix = createMatrix($tileHC, $tileVC);
 	
+	for ($row=0; $row<=($rc-$tileVC);$row++)
+	{
+		for ($col=0; $col<=($cc-$tileHC);$col++)
+		{
+			copyMatrix($bufMatrix, $matrix, $col, $row, $tileHC, $tileVC);
+			//<-------compare with template!!!!
+		}	
+	}
 	
-	
-	
-	$_tile['located'] = true;
-	return $_tile;
+	$tile['located'] = true;
+	return $tile;
+}
+
+function copyMatrix(&$destMatrix, $resMatrix, $xstart, $ystart, $cc, $rc)
+{
+	for ($row=0;$row<$rc;$row++)
+	{
+		for ($col=0;$col<$cc;$col++)
+		{
+			$destMatrix[$row][$col] = $resMatrix[$ystart+$row][$xstart+$col];
+		}	
+	}
 }
 //--------------------------------------------------------------------------------------------------------------------------
 
-$matrixProperties = getMatrixProperties($tiles, $types);
-$matrix = createMatrix($windowWidth, $tileWidth, $spaceWidth, $matrixProperties);
-sortTilesByHorC($tiles, $types);
-locateTiles($tiles, $matrix, $matrixProperties, $types);
-die(var_dump($tiles));
-var_dump($matrix);
+$mainMatrixProperties = getMainMatrixProperties($contentTiles, $mainTypes);
+
+
+$colCount = floor(($windowWidth+$spaceWidth)/($tileWidth+$spaceWidth));
+if ($colCount < $mainMatrixProperties['minColCount']) 
+	$colCount = $mainMatrixProperties['minColCount'];
+$rowCount = ceil($mainMatrixProperties['needTiles']/$colCount);
+
+$mainMatrix = createMatrix($colCount, $rowCount);
+
+sortTilesByHC($contentTiles, $mainTypes);
+
+locateTiles($contentTiles, $mainMatrix, $colCount, $rowCount, $mainTypes);
+
+
+var_dump($contentTiles);
 
 ?>

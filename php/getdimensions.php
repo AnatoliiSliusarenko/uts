@@ -3,7 +3,7 @@
 $tileWidth = 128;
 $spaceWidth = 10;
 $mainTypes = array(
-	'round' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'tenplate' => array(0 => array(1))),
+	'round' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
 	'horsquare' => array('tiles' => 2, 'tileHC' => 2, 'tileVC' => 1, 'template' => array(0 => array(1, 1))),
 	'bigsquare' => array('tiles' => 4, 'tileHC' => 2, 'tileVC' => 2, 'template' => array(0 => array(1, 1), 1 => array(1,1))),
 	'square' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
@@ -72,7 +72,7 @@ function sortTilesByHC(&$tiles, $types)
 	$tiles = $sortTiles;
 }
 
-function locateTiles(&$tiles, &$matrix, $cc, $rc, $types)
+function locateTiles(&$tiles, &$matrix, $cc, &$rc, $types)
 {
 	foreach ($tiles as $i=>$tile)
 	{
@@ -80,7 +80,7 @@ function locateTiles(&$tiles, &$matrix, $cc, $rc, $types)
 	}
 }
 
-function placeTile($tile, &$matrix, $types, $cc, $rc)
+function placeTile($tile, &$matrix, $types, $cc, &$rc)
 {
 	$tileType = $tile['type'];
 	$tileHC = $types[$tileType]['tileHC'];
@@ -90,8 +90,6 @@ function placeTile($tile, &$matrix, $types, $cc, $rc)
 	//----change matrix row count
 	if ($rc < $tileVC)
 	{
-		$diff = $tileVC - $rc;
-		
 		for ($i = $rc; $i<$tileVC; $i++)
 		{
 			$matrix[$i] = array();
@@ -101,6 +99,8 @@ function placeTile($tile, &$matrix, $types, $cc, $rc)
 				$matrix[$i][$j] = 0;
 			}
 		}
+		
+		$rc = $tileVC;
 	}
 	
 	$bufMatrix = createMatrix($tileHC, $tileVC);
@@ -109,29 +109,59 @@ function placeTile($tile, &$matrix, $types, $cc, $rc)
 	{
 		for ($col=0; $col<=($cc-$tileHC);$col++)
 		{
-			copyMatrix($bufMatrix, $matrix, $col, $row, $tileHC, $tileVC);
-			//<-------compare with template!!!!
+			copyMatrix($bufMatrix, 0, 0, $matrix, $col, $row, $tileHC, $tileVC);
+			
+			if (canPlace($bufMatrix, $tileTemplate, $tileHC, $tileVC))
+			{
+				copyMatrix($matrix, $col, $row, $tileTemplate, 0, 0, $tileHC, $tileVC);
+				$tile['located'] = true;
+				$tile['x'] = $col;
+				$tile['y'] = $row;
+				
+				return $tile;
+			}
 		}	
 	}
 	
-	$tile['located'] = true;
-	return $tile;
+	$rc = $rc + 1;
+	
+	$matrix[$rc-1] = array();
+		
+	for ($j=0; $j<$cc; $j++)
+	{
+		$matrix[$rc-1][$j] = 0;
+	}
+	
+	placeTile($tile, $matrix, $types, $cc, $rc);
 }
 
-function copyMatrix(&$destMatrix, $resMatrix, $xstart, $ystart, $cc, $rc)
+function canPlace($destMatrix, $templateMatrix, $cc, $rc)
 {
 	for ($row=0;$row<$rc;$row++)
 	{
 		for ($col=0;$col<$cc;$col++)
 		{
-			$destMatrix[$row][$col] = $resMatrix[$ystart+$row][$xstart+$col];
+			if (($templateMatrix[$row][$col] == 1) && ($destMatrix[$row][$col] == 1))
+				return false;
+		}	
+	}
+	
+	return true;
+}
+
+function copyMatrix(&$destMatrix, $xStartDest, $yStartDest, $resMatrix, $xStartRes, $yStartRes, $cc, $rc)
+{
+	for ($row=0;$row<$rc;$row++)
+	{
+		for ($col=0;$col<$cc;$col++)
+		{
+			$destMatrix[$yStartDest+$row][$xStartDest+$col] = $resMatrix[$yStartRes+$row][$xStartRes+$col];
 		}	
 	}
 }
 //--------------------------------------------------------------------------------------------------------------------------
 
 $mainMatrixProperties = getMainMatrixProperties($contentTiles, $mainTypes);
-
 
 $colCount = floor(($windowWidth+$spaceWidth)/($tileWidth+$spaceWidth));
 if ($colCount < $mainMatrixProperties['minColCount']) 

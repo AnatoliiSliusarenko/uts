@@ -29,7 +29,7 @@ var Server = {
 					type: "GET"
 				}
 			).success(function(dataResp){
-				debugger;
+				$("#content-holder").empty().append(dataResp);
 			});
 		}
 };

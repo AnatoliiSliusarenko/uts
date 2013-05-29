@@ -6,9 +6,12 @@
 </head>
 <body>
 	<div id="content">
-		content of INDEX page
-		I'm looking to avoid the first method you suggest because I want this code to be re-useable for listViews associated with different selectors. As far as I can tell the second suggestion is the same as passing in a string and constructing the selector in the called function, which I'm also hoping to avoid. – Ben Pearce Jul 28 '12 at 20:58
-The second solution would be the one to go for but change it to be able to pass in listitems. I've added this jsfiddle example for you to look it. It is totally reusable. This solution takes into account you already have an unordered list in your html as per your html in your question. Hope that helps – jjay225 Jul 30 '12 at 7:24
+		<div id="div1" class="tile" tile-type="round">div1</div>
+		<div id="div2" class="tile" tile-type="horsquare">div2</div>
+		<div id="div3" class="tile" tile-type="bigsquare">div3</div>
+		<div id="div4" class="tile" tile-type="square">div4</div>
+		<div id="div5" class="tile" tile-type="bigsquare-square">div5</div>
+		<div id="div6" class="tile" tile-type="horsquare">div6</div>
 	</div>
 </body>
 </html>

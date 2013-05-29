@@ -10,11 +10,13 @@ body{
 	padding-top:60px;
 	margin:0;
 }
+.tile {background-color: #897970}
 #content-holder
 {
-	margin: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
-#main-menu{
+#globalNavBar{
 	height:50px;
 	margin-bottom:10px;
 	line-height:1;
@@ -34,15 +36,15 @@ body{
 	background:-ms-linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 	background:linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 }
-#main-menu ul{list-style:none;margin:0 auto;padding:0}
-#main-menu ul.rightGroup{float:right}
-#main-menu a{font-size:14px;font-size:0.75rem;color:#999;text-decoration:none;display:block;height:46px;letter-spacing:1.5px;border-bottom:4px solid transparent;text-shadow:1px 1px 4px #000;-webkit-transition:all ease .5s;-moz-transition:all ease .5s;transition:all ease .5s;}
-#main-menu a:hover,#globalNavBar a:focus{color:#fff}
-#main-menu li{padding-left:10px;padding-right:10px;height:50px;line-height:50px;float:left;width:100px;text-align:center;box-shadow:-1px -1px 0 0 #000,0px -2px 0 1px #1a1a1a}
-#main-menu .compressed li{width:80px}
-#main-menu .rightGroup li:first-child{width:100px}
-#main-menu li.active a{border-bottom:4px solid #FFD517}
-#main-menu li.active a{color:#fff}
+#globalNavBar ul{list-style:none;margin:0 auto;padding:0}
+#globalNavBar ul.navRight{float:right}
+#globalNavBar a{font-size:14px;font-size:0.75rem;color:#999;text-decoration:none;display:block;height:46px;letter-spacing:1.5px;border-bottom:4px solid transparent;text-shadow:1px 1px 4px #000;-webkit-transition:all ease .5s;-moz-transition:all ease .5s;transition:all ease .5s;}
+#globalNavBar a:hover,#globalNavBar a:focus{color:#fff}
+#globalNavBar li{padding-left:10px;padding-right:10px;height:50px;line-height:50px;float:left;width:100px;text-align:center;box-shadow:-1px -1px 0 0 #000,0px -2px 0 1px #1a1a1a}
+#globalNavBar .compressed li{width:80px}
+#globalNavBar .navRight li:first-child{width:100px}
+#globalNavBar li.active a{border-bottom:4px solid #FFD517}
+#globalNavBaru li.active a{color:#fff}
 #ajax-loader {
 	display: block;
 	top: 48%;

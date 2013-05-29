@@ -1,22 +1,16 @@
 $(document).ready(function(){
 	initApp();
 });
-
-//--------ROUTING
-var	routes = new Array();
-	routes['index'] = {path: "index", page: "index.html", setSettings: myfunc};
-	routes['contact'] = {path: "contact", page: "contact.html", setSettings: myfunc};
-
-//-------GLOBAL VARIABLES
+//-------GLOBAL VARIABLES--------------------------------------------------------------
 var baseRoute = "index",
 	route = null;	
+//--------ROUTING----------------------------------------------------------------------
+var	routes = new Array();
+	routes['index'] = {path: "index", page: "index.html", setSettings: function(){getDimensions();}};
+	routes['contact'] = {path: "contact", page: "contact.html", setSettings: function(){}};
 
-//---------SETTINGS FOR ROUTES
-function myfunc()
-{
-	//alert('Contact settings here!');
-}
-
+//---------SETTINGS FOR ROUTES---------------------------------------------------------
+//-------------INIT--------------------------------------------------------------------
 function initApp()
 {
 	route = getRoute(window.location.hash);
@@ -25,7 +19,7 @@ function initApp()
 	
 	$("a.ajax").click(actionClick);
 }
-//------------ADD CLICK LISTENERS
+//------------ADD CLICK LISTENERS------------------------------------------------------
 function actionClick()
 {
 	$("li").removeClass('active');
@@ -33,7 +27,7 @@ function actionClick()
 	$("#content-holder").fadeOut('slow', loadContent);
 	return false;
 }
-//---------GET ROUTE
+//---------GET ROUTE------------------------------------------------------------------
 function getRoute(routeName)
 {
 	var uri = routeName.replace("#", "");
@@ -49,7 +43,7 @@ function getRoute(routeName)
 	$("li a.ajax[href='"+window.location.hash+"']").parent().addClass('active');
 	return routes[baseRoute];
 }
-//----------LOAD CONTENT
+//----------LOAD CONTENT--------------------------------------------------------------
 function loadContent()
 {
 	var localRoute = route,

@@ -1,6 +1,6 @@
 <?php
 //------Global variables----------------------------------------------------------------------------------------------------------
-$tileWidth = 128;
+$tileWidth = 150;
 $spaceWidth = 10;
 $mainTypes = array(
 	'round' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
@@ -21,7 +21,6 @@ function getMainMatrixProperties(&$tiles, $types)
 	
 	foreach ($tiles as $i=>$tile)
 	{
-		$tiles[$i]['located'] = false;
 		$needTiles += $types[$tile['type']]['tiles'];
 		if ($types[$tile['type']]['tileHC']>$minColCount) $minColCount = $types[$tile['type']]['tileHC'];
 	}
@@ -114,7 +113,7 @@ function placeTile($tile, &$matrix, $types, $cc, &$rc)
 			if (canPlace($bufMatrix, $tileTemplate, $tileHC, $tileVC))
 			{
 				copyMatrix($matrix, $col, $row, $tileTemplate, 0, 0, $tileHC, $tileVC);
-				$tile['located'] = true;
+				
 				$tile['x'] = $col;
 				$tile['y'] = $row;
 				
@@ -132,7 +131,7 @@ function placeTile($tile, &$matrix, $types, $cc, &$rc)
 		$matrix[$rc-1][$j] = 0;
 	}
 	
-	placeTile($tile, $matrix, $types, $cc, $rc);
+	return placeTile($tile, $matrix, $types, $cc, $rc);
 }
 
 function canPlace($destMatrix, $templateMatrix, $cc, $rc)
@@ -174,7 +173,18 @@ sortTilesByHC($contentTiles, $mainTypes);
 
 locateTiles($contentTiles, $mainMatrix, $colCount, $rowCount, $mainTypes);
 
+foreach ($contentTiles as $i=>$tile)
+{
+	$contentTiles[$i]['W'] = $tileWidth;
+	$contentTiles[$i]['L'] = ($tile['x'])*($tileWidth+$spaceWidth);
+	$contentTiles[$i]['T'] = ($tile['y'])*($tileWidth+$spaceWidth);
+	
+	unset($contentTiles[$i]['type']);
+	unset($contentTiles[$i]['x']);
+	unset($contentTiles[$i]['y']);
+}
 
-var_dump($contentTiles);
+
+print json_encode($contentTiles);
 
 ?>

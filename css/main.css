@@ -13,6 +13,8 @@ body{
 .tile {background-color: #897970}
 #content-holder
 {
+	width: 100%;
+	position: relative;
 	margin-left: 10px;
 	margin-right: 10px;
 }

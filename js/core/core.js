@@ -61,8 +61,10 @@ function afterLoadContent(response, status, xhr)
 		case "success": 
 			{
 				console.log( "Successful loading page...");
+			
 				$('#ajax-loader').fadeOut('normal');
 				$("#content-holder").fadeIn('slow');
+				
 				route.setSettings();
 			}
 			break;		

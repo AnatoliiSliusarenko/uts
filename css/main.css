@@ -10,7 +10,8 @@ body{
 	padding-top:60px;
 	margin:0;
 }
-.tile {background-color: #897970}
+.tile.single {background-color: #897970}
+.container-item {background-color: #897970}
 #content-holder
 {
 	width: 100%;

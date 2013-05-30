@@ -3,10 +3,9 @@
 $tileWidth = 150;
 $spaceWidth = 10;
 $mainTypes = array(
-	'round' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
+	'square' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
 	'horsquare' => array('tiles' => 2, 'tileHC' => 2, 'tileVC' => 1, 'template' => array(0 => array(1, 1))),
 	'bigsquare' => array('tiles' => 4, 'tileHC' => 2, 'tileVC' => 2, 'template' => array(0 => array(1, 1), 1 => array(1,1))),
-	'square' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
 	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0)))
 );
 //------Recieved------------------------------------------------------------------------------------------------------------------
@@ -21,6 +20,11 @@ function getMainMatrixProperties(&$tiles, $types)
 	
 	foreach ($tiles as $i=>$tile)
 	{
+		if (isset($types[$tile['type']])==false)
+		{
+			unset($tiles[$i]);
+			continue;
+		}
 		$needTiles += $types[$tile['type']]['tiles'];
 		if ($types[$tile['type']]['tileHC']>$minColCount) $minColCount = $types[$tile['type']]['tileHC'];
 	}
@@ -173,9 +177,10 @@ sortTilesByHC($contentTiles, $mainTypes);
 
 locateTiles($contentTiles, $mainMatrix, $colCount, $rowCount, $mainTypes);
 
+$response['W'] = $tileWidth;
+$response['S'] = $spaceWidth;
 foreach ($contentTiles as $i=>$tile)
 {
-	$contentTiles[$i]['W'] = $tileWidth;
 	$contentTiles[$i]['L'] = ($tile['x'])*($tileWidth+$spaceWidth);
 	$contentTiles[$i]['T'] = ($tile['y'])*($tileWidth+$spaceWidth);
 	
@@ -184,7 +189,8 @@ foreach ($contentTiles as $i=>$tile)
 	unset($contentTiles[$i]['y']);
 }
 
+$response['tiles'] = $contentTiles;
 
-print json_encode($contentTiles);
+print json_encode($response);
 
 ?>

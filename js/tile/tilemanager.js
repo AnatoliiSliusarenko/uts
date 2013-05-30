@@ -1,34 +1,61 @@
-//------USER FUNCTIONS-----------------------
-window.onresize = getDimensions; 
-
-function getDimensions()
-{
-	var	divs = new Array();
-	
-	$('.tile').each(function(){
-		
-		divs.push({
-			id: $(this).attr('id'),
-			type: $(this).attr('tile-type')
-		});
-	});
-	
-	var data = {
-		tiles: divs,
-		windowWidth: $("#content-holder").width()
-	};
-	
-	Server.getDimensions(data);
+//----------CORE-----------------------------
+var Page = {
+		initialized: false,
+		callback: null,
+		tilesProcessed: -1,
+		fireCallback: function(){
+			Page.tilesProcessed--;
+			if ((Page.tilesProcessed == 0) && (Page.callback != null))
+			{
+				Page.callback();
+				Page.callback = null;
+			}
+		},
+		getDimensions: function()
+		{
+			var tiles = Page.getTiles();
+			
+			Server.getDimensions(tiles);
+		},
+		getTiles: function(){
+			var	divs = new Array();
+			
+			$('.tile').each(function(){
+				
+				divs.push({
+					id: $(this).attr('id'),
+					type: $(this).attr('tile-type')
+				});
+			});
+			
+			var dataTiles = {
+				tiles: divs,
+				windowWidth: $("#content-holder").width()
+			};
+			
+			return dataTiles;
+		},
+		setPositions: function(tilesInfo){
+			Page.tilesProcessed = tilesInfo.tiles.length;
+			
+			if (Page.initialized)
+			{
+				for (i=0; i<tilesInfo.tiles.length;i++)
+				{
+					TileLib.updateTile(tilesInfo.tiles[i].id, tilesInfo.tiles[i].L, tilesInfo.tiles[i].T, 1);
+				}
+			}else
+			{
+				for (i=0; i<tilesInfo.tiles.length;i++)
+				{
+					TileLib.initTile(tilesInfo.tiles[i].id, tilesInfo.tiles[i].L, tilesInfo.tiles[i].T, tilesInfo.W, tilesInfo.S);
+				}
+				Page.initialized = true;
+			}
+			
+		}
 }
 
-function setPositions(tilesInfo)
-{
-	for (i=0; i<tilesInfo.length;i++)
-	{
-		TileLib.updateTile(tilesInfo[i]);
-	}
-}
-//-------------------------------------------
 
 var Server = {
 		getDimensions: function(dataSend){
@@ -40,20 +67,75 @@ var Server = {
 				}
 			).success(function(dataResp){
 				dataResp = $.parseJSON(dataResp);
-				setPositions(dataResp);
+				Page.setPositions(dataResp);
 			});
 		}
 };
 
 var TileLib = {
-		updateTile: function(updateData){
-			TweenLite.to($("#"+updateData.id), 1, {
-				top: updateData.T.toString()+"px",
-				left: updateData.L.toString()+"px",
-				width: updateData.W.toString()+"px",
-				height: updateData.W.toString()+"px",
-				position: "absolute"
+		initTile: function(id, L, T, w, s){
+			if ($("#"+id).hasClass('container') == false)
+			{
+				TweenMax.to($("#"+id), 0, {
+					top: T+"px",
+					left: L+"px",
+					width: w+"px",
+					height: w+"px",
+					position: "absolute",
+					onComplete: Page.fireCallback
+				});
+			} else
+			{
+				$("#"+id).find(".container-item").each(function(){
+					var itemInfo = tcitems[$(this).attr('item-type')],
+						sameRow = $(this).hasClass('same-row'),
+						xItem = $(this).attr('item-x'),
+						yItem = $(this).attr('item-y'),
+						topItem, leftItem, widthItem, heightItem;
+						
+					widthItem = ((w+s)*itemInfo.cc-s);
+					heightItem = ((w+s)*itemInfo.rc-s);
+					
+					topItem = T+yItem*(w+s);
+					leftItem = L+xItem*(w+s);
+					
+					TweenMax.to($(this), 0, {
+						width: widthItem+"px",
+						height: heightItem+"px",
+						top: topItem+"px",
+						left: leftItem+"px",
+						position: "absolute"
+					});
+					
+					//debugger
+					
+					
+				});
+				
+				TweenMax.to($("#"+id), 0, {
+					width: 'auto',
+					height: 'auto',
+					//top: T+"px",
+					//left: L+"px",
+					onComplete: Page.fireCallback
+				});
+			}			
+		},
+		updateTile: function(id, L, T, speed){
+			TweenMax.to($("#"+id), speed, {
+				top: T+"px",
+				left: L+"px",
+				onComplete: Page.fireCallback
 			});
 		}
 };
 
+//------set listeners------------------------
+window.onresize = Page.getDimensions; 
+//------tile container items-----------------
+var tcitems = {
+	"c2r1": {cc: 2, rc:1},
+	"c1r1": {cc: 1, rc:1},
+	"c2r2": {cc: 2, rc:2},
+	"c1r2": {cc: 1, rc:2}
+};

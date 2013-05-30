@@ -1,15 +1,30 @@
 $(document).ready(function(){
 	initApp();
 });
+//-------USER VARIABLES----------------------------------------------------------------
+var baseRoute = "index";
 //-------GLOBAL VARIABLES--------------------------------------------------------------
-var baseRoute = "index",
-	route = null;	
+var route = null,	
+	routes = new Array();
 //--------ROUTING----------------------------------------------------------------------
-var	routes = new Array();
-	routes['index'] = {path: "index", page: "index.html", setSettings: function(){getDimensions();}};
-	routes['contact'] = {path: "contact", page: "contact.html", setSettings: function(){}};
-
-//---------SETTINGS FOR ROUTES---------------------------------------------------------
+	routes['index'] = {
+					   path: "index", 
+					   page: "index.html", 
+					   setSettings: function(callback){
+								   	  Page.initialized = false;
+									  Page.callback = callback; 
+									  Page.getDimensions();
+					  			    }
+					   };
+	routes['contact'] = {
+			           path: "contact", 
+			           page: "contact.html", 
+			           //----------this is default setSettings function
+			           setSettings: function(callback){
+			 					 	  if (callback!=='undefined') 
+							 		    callback();
+						            }
+	                    };
 //-------------INIT--------------------------------------------------------------------
 function initApp()
 {
@@ -61,11 +76,11 @@ function afterLoadContent(response, status, xhr)
 		case "success": 
 			{
 				console.log( "Successful loading page...");
-			
-				$('#ajax-loader').fadeOut('normal');
-				$("#content-holder").fadeIn('slow');
+				route.setSettings(function(){
+					$('#ajax-loader').fadeOut('normal');
+					$("#content-holder").fadeIn('slow');
+				});
 				
-				route.setSettings();
 			}
 			break;		
 	}	

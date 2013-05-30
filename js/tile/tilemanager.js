@@ -42,7 +42,7 @@ var Page = {
 			{
 				for (i=0; i<tilesInfo.tiles.length;i++)
 				{
-					TileLib.updateTile(tilesInfo.tiles[i].id, tilesInfo.tiles[i].L, tilesInfo.tiles[i].T, 1);
+					TileLib.updateTile(tilesInfo.tiles[i].id, tilesInfo.tiles[i].L, tilesInfo.tiles[i].T, tilesInfo.W, tilesInfo.S, 1);
 				}
 			}else
 			{
@@ -88,7 +88,6 @@ var TileLib = {
 			{
 				$("#"+id).find(".container-item").each(function(){
 					var itemInfo = tcitems[$(this).attr('item-type')],
-						sameRow = $(this).hasClass('same-row'),
 						xItem = $(this).attr('item-x'),
 						yItem = $(this).attr('item-y'),
 						topItem, leftItem, widthItem, heightItem;
@@ -107,26 +106,53 @@ var TileLib = {
 						position: "absolute"
 					});
 					
-					//debugger
-					
-					
 				});
 				
 				TweenMax.to($("#"+id), 0, {
 					width: 'auto',
 					height: 'auto',
-					//top: T+"px",
-					//left: L+"px",
 					onComplete: Page.fireCallback
 				});
 			}			
 		},
-		updateTile: function(id, L, T, speed){
-			TweenMax.to($("#"+id), speed, {
-				top: T+"px",
-				left: L+"px",
-				onComplete: Page.fireCallback
-			});
+		updateTile: function(id, L, T, w, s, speed){
+			if ($("#"+id).hasClass('container') == false)
+			{
+				TweenMax.to($("#"+id), speed, {
+					top: T+"px",
+					left: L+"px",
+					onComplete: Page.fireCallback
+				});
+			} else
+			{
+				$("#"+id).find(".container-item").each(function(){
+					var itemInfo = tcitems[$(this).attr('item-type')],
+						xItem = $(this).attr('item-x'),
+						yItem = $(this).attr('item-y'),
+						topItem, leftItem, widthItem, heightItem;
+						
+					widthItem = ((w+s)*itemInfo.cc-s);
+					heightItem = ((w+s)*itemInfo.rc-s);
+					
+					topItem = T+yItem*(w+s);
+					leftItem = L+xItem*(w+s);
+					
+					TweenMax.to($(this), speed, {
+						width: widthItem+"px",
+						height: heightItem+"px",
+						top: topItem+"px",
+						left: leftItem+"px",
+						position: "absolute"
+					});
+					
+				});
+				
+				TweenMax.to($("#"+id), speed, {
+					width: 'auto',
+					height: 'auto',
+					onComplete: Page.fireCallback
+				});
+			}
 		}
 };
 

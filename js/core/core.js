@@ -11,6 +11,7 @@ var route = null,
 					   path: "index", 
 					   page: "index.html", 
 					   setSettings: function(callback){
+						   			  $('.sendbutton').bind('click', SendMessage);
 								   	  Page.initialized = false;
 									  Page.callback = callback; 
 									  Page.getDimensions();

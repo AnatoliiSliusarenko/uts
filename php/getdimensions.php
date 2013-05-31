@@ -1,12 +1,13 @@
 <?php
 //------Global variables----------------------------------------------------------------------------------------------------------
 $tileWidth = 150;
-$spaceWidth = 10;
+$spaceWidth = 20;
 $mainTypes = array(
 	'square' => array('tiles' => 1, 'tileHC' => 1, 'tileVC' => 1, 'template' => array(0 => array(1))),
 	'horsquare' => array('tiles' => 2, 'tileHC' => 2, 'tileVC' => 1, 'template' => array(0 => array(1, 1))),
 	'bigsquare' => array('tiles' => 4, 'tileHC' => 2, 'tileVC' => 2, 'template' => array(0 => array(1, 1), 1 => array(1,1))),
-	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0)))
+	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0))),
+	'bighorsquare' => array('tiles' => 6, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 1)))
 );
 //------Recieved------------------------------------------------------------------------------------------------------------------
 $contentTiles = isset($_GET['tiles']) ? $_GET['tiles'] : array();

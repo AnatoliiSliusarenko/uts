@@ -6,20 +6,36 @@
 </head>
 <body>
 	<div id="content">
-		<div id="div1" class="tile single" tile-type="square">round</div>
+		<div id="div1" class="tile single facebook" tile-type="square">
+			<a href="http://www.facebook.com"><img src="img/social/facebook.png"/></a>
+		</div>
 		
 		<div id="div2" class="tile container" tile-type="horsquare">
 			<div class="container-item" item-type="c2r1" item-x="0" item-y="0">This is Horizontal Square</div>
 		</div>
 		
 		<div id="div3" class="tile container" tile-type="bigsquare">
-			<div class="container-item" item-type="c2r2" item-x="0" item-y="0">This is BIG Square</div>
+			<div class="container-item" item-type="c2r2" item-x="0" item-y="0">
+				<div id="quickcontact">
+					<div class="title">Quick contact</div>
+					<form id="qcform" action="php/sendmessage.php">
+						<input id="nameInput" class="inputbox" type="text" placeholder="Name..."/>
+						<input id="emailInput" class="inputbox" type="text" placeholder="Email..."/>
+						<input id="subjectInput" class="inputbox" type="text" placeholder="Subject..."/>
+						<textarea id="messageInput" class="textareabox" placeholder="Your message..."></textarea>
+						<input class="sendbutton" type="button" value="send message"/> 
+						<div id="response"></div>
+					</form>
+				</div>
+			</div>
 		</div>
-		<div id="div4" class="tile single" tile-type="square">square</div>
+		<div id="div4" class="tile single linkedin" tile-type="square">
+			<a href="http://www.linkedin.com"><img src="img/social/linkedin.png"/></a>
+		</div>
 		
 		<div id="div5" class="tile container" tile-type="bigsquare-square">
 			<div class="container-item" item-type="c2r2" item-x="0" item-y="0">This is BB main</div>
-			<div class="container-item same-row" item-type="c1r1" item-x="2" item-y="0">This is BB +</div>
+			<div class="container-item plus-left" item-type="c1r1" item-x="2" item-y="0">This is BB +</div>
 		</div>
 		
 		<div id="div6" class="tile container" tile-type="horsquare">
@@ -40,11 +56,40 @@
 		
 		<div id="div11" class="tile container" tile-type="bigsquare-square">
 			<div class="container-item" item-type="c2r2" item-x="0" item-y="0">This is BB main</div>
-			<div class="container-item same-row" item-type="c1r1" item-x="2" item-y="0">This is BB +</div>
+			<div class="container-item plus-left" item-type="c1r1" item-x="2" item-y="0">This is BB +</div>
 		</div>
 		
 		<div id="div12" class="tile container" tile-type="horsquare">
 			<div class="container-item" item-type="c2r1" item-x="0" item-y="0">This is Horizontal Square</div>
+		</div>
+		
+		<div id="div13" class="tile container" tile-type="bighorsquare">
+			<div class="container-item" item-type="c3r2" item-x="0" item-y="0">
+				
+				
+				
+				<div class="content" style="position:relative;z-index:0">
+					<div id="myGallery" style="height: 291px; width: 100%; display: block;" class="jdGallery withArrows">
+								<div id="s5_iacf_content_wrap" style="display: block;"></div>
+								<a class="open" href="javascript:;" style="display: block;"></a>
+								<div class="slideElement " style="position: absolute; left: 0px; right: 0px; margin: 0px; padding: 0px; opacity: 0; background-image: url(http://www.shape5.com/demo/metro_shows/images/iacf1.jpg); top: -291px; background-position: 50% 50%;"></div>
+								<div class="slideElement " style="position: absolute; left: 0px; right: 0px; margin: 0px; padding: 0px; opacity: 1; background-image: url(http://www.shape5.com/demo/metro_shows/images/iacf2.jpg); top: -291px; background-position: 50% 50%;"></div>
+								<div class="slideElement active" style="position: absolute; left: 0px; right: 0px; margin: 0px; padding: 0px; opacity: 1; background-image: url(http://www.shape5.com/demo/metro_shows/images/iacf3.jpg); top: 0px; background-position: 50% 50%;"></div>
+								<a class="left"></a>
+								<a class="right"></a>
+								<div class="loadingElement" style="display: none;"></div>
+								<div class="slideInfoZone" style="opacity: 0.7; height: 112px;">
+									<h2>Responsive Image Fader</h2>
+									<p>Our popular image and content fader module has been updated to work with responsive layouts. Resize the screen to see it work.<a class="readon" href="/demo/metro_shows/index.php/extensions/s5-image-and-content-fader">More Information...</a>
+										<span style="clear:both; display:block"></span>
+									</p>
+								</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
 		</div>
 	</div>
 </body>

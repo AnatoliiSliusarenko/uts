@@ -11,7 +11,129 @@ body{
 	margin:0;
 }
 .tile.single {background-color: #897970}
-.container-item {background-color: #897970}
+
+ 	
+/*----facebook-----*/
+.tile.facebook {background-color: #6E6E6E}
+.tile.facebook:hover {background-color: #7C7C7C; cursor:pointer; cursor:hand;}
+.facebook a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.facebook img {
+	width:84px;
+	height:85px;
+	position: relative;
+	left: 23%;
+	top: 23%;
+}
+/*----linkedin-----*/
+.tile.linkedin {background-color: #00AACD}
+.tile.linkedin:hover {background-color: #19B2D2; cursor:pointer; cursor:hand;}
+.linkedin a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.linkedin img {
+	width:84px;
+	height:85px;
+	position: relative;
+	left: 23%;
+	top: 23%;
+}
+
+/*---quick contact--*/
+#qcform #response {
+	font-size:1.2em;
+	margin-left:10px;
+	color: red;
+}
+#quickcontact {
+	padding-left:5px;
+	padding-right:5px;
+	height:auto;
+	width: auto;
+	font-family: Open Sans Condensed;
+	color:#191919;
+	font-size: 0.8em;
+	line-height: 140%;
+}
+#quickcontact .title {
+	font-size: 2.2em;
+	text-align: right;
+	padding: 10px;
+}
+#quickcontact .inputbox {
+	color: #000000;
+	background: transparent;
+	display:block;
+	width: 90%;
+	padding: 7px;
+	margin:0 auto;
+	margin-bottom: 5px;
+	border:1px solid #999999;
+}
+#quickcontact .inputbox:hover {
+	border:solid 1px #666666;
+}
+
+#quickcontact .textareabox {
+	color: #000000;
+	background: transparent;
+	display:block;
+	width: 90%;
+	max-width:90%;
+	padding: 7px;
+	margin:0 auto;
+	margin-bottom: 5px;
+	height: 100px;
+	max-height:100px;
+	border:1px solid #999999;
+}
+
+#quickcontact .textareabox:hover {
+	border:solid 1px #666666;
+}
+
+#quickcontact .sendbutton {
+	margin-right:7px;
+	padding-right:20px;
+	background: transparent;
+	float:right;
+	border:0;
+	text-shadow:1px 1px 4px #ffffff;
+	color: #000000;
+	background: url(../img/send.png) 94px 0px no-repeat;
+}
+
+#quickcontact .sendbutton:hover {
+	cursor: pointer;
+	cursor: hand;
+	text-shadow:1px 1px 4px #000000; 
+	color: #ffffff;
+	background: url(../img/send.png) 94px -18px no-repeat;
+}
+#quickcontact .sendbutton:active
+{
+	text-shadow:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container-item {background-color: #CCCCCC}
 #content-holder
 {
 	width: 100%;

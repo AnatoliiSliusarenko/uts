@@ -90,6 +90,7 @@ var TileLib = {
 					var itemInfo = tcitems[$(this).attr('item-type')],
 						xItem = $(this).attr('item-x'),
 						yItem = $(this).attr('item-y'),
+						plusLeft = $(this).hasClass('plus-left'), 
 						topItem, leftItem, widthItem, heightItem;
 						
 					widthItem = ((w+s)*itemInfo.cc-s);
@@ -97,6 +98,12 @@ var TileLib = {
 					
 					topItem = T+yItem*(w+s);
 					leftItem = L+xItem*(w+s);
+					
+					if (plusLeft)
+					{
+						leftItem -= s;
+						widthItem += s; 
+					}
 					
 					TweenMax.to($(this), 0, {
 						width: widthItem+"px",
@@ -108,11 +115,7 @@ var TileLib = {
 					
 				});
 				
-				TweenMax.to($("#"+id), 0, {
-					width: 'auto',
-					height: 'auto',
-					onComplete: Page.fireCallback
-				});
+				Page.fireCallback();
 			}			
 		},
 		updateTile: function(id, L, T, w, s, speed){
@@ -120,37 +123,30 @@ var TileLib = {
 			{
 				TweenMax.to($("#"+id), speed, {
 					top: T+"px",
-					left: L+"px",
-					onComplete: Page.fireCallback
+					left: L+"px"
 				});
 			} else
 			{
 				$("#"+id).find(".container-item").each(function(){
-					var itemInfo = tcitems[$(this).attr('item-type')],
-						xItem = $(this).attr('item-x'),
+					var	xItem = $(this).attr('item-x'),
 						yItem = $(this).attr('item-y'),
-						topItem, leftItem, widthItem, heightItem;
+						plusLeft = $(this).hasClass('plus-left'),
+						topItem, leftItem;
 						
-					widthItem = ((w+s)*itemInfo.cc-s);
-					heightItem = ((w+s)*itemInfo.rc-s);
 					
 					topItem = T+yItem*(w+s);
 					leftItem = L+xItem*(w+s);
 					
-					TweenMax.to($(this), speed, {
-						width: widthItem+"px",
-						height: heightItem+"px",
-						top: topItem+"px",
-						left: leftItem+"px",
-						position: "absolute"
-					});
+
+					if (plusLeft)
+					{
+						leftItem -= s; 
+					}
 					
-				});
-				
-				TweenMax.to($("#"+id), speed, {
-					width: 'auto',
-					height: 'auto',
-					onComplete: Page.fireCallback
+					TweenMax.to($(this), speed, {
+						top: topItem+"px",
+						left: leftItem+"px"
+					});
 				});
 			}
 		}
@@ -163,5 +159,6 @@ var tcitems = {
 	"c2r1": {cc: 2, rc:1},
 	"c1r1": {cc: 1, rc:1},
 	"c2r2": {cc: 2, rc:2},
-	"c1r2": {cc: 1, rc:2}
+	"c1r2": {cc: 1, rc:2},
+	"c3r2": {cc: 3, rc:2}
 };

@@ -12,10 +12,24 @@ body{
 }
 .tile.single {background-color: #897970}
 
- 	
+/*----twitter-----*/
+.tile.twitter {background-color: #00AACD}
+.tile.twitter:hover {background-color: #19B2D2; cursor:pointer; cursor:hand;}
+.twitter a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.twitter img {
+	width:84px;
+	height:85px;
+	position: relative;
+	left: 23%;
+	top: 23%;
+} 	
 /*----facebook-----*/
-.tile.facebook {background-color: #6E6E6E}
-.tile.facebook:hover {background-color: #7C7C7C; cursor:pointer; cursor:hand;}
+.tile.facebook {background-color: #00AACD}
+.tile.facebook:hover {background-color: #19B2D2; cursor:pointer; cursor:hand;}
 .facebook a {
 	display: block;
 	width: 100%;
@@ -168,7 +182,7 @@ body{
 #globalNavBar li{padding-left:10px;padding-right:10px;height:50px;line-height:50px;float:left;width:100px;text-align:center;box-shadow:-1px -1px 0 0 #000,0px -2px 0 1px #1a1a1a}
 #globalNavBar .compressed li{width:80px}
 #globalNavBar .navRight li:first-child{width:100px}
-#globalNavBar li.active a{border-bottom:4px solid #FFD517}
+#globalNavBar li.active a{border-bottom:4px solid #00AACD}
 #globalNavBaru li.active a{color:#fff}
 #ajax-loader {
 	display: block;

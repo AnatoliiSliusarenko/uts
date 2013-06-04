@@ -15,6 +15,7 @@ var route = null,
 						   			  Page.initialized = false;
 									  Page.callback = callback; 
 									  Page.getDimensions();
+									  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script>");
 					  			    }
 					   };
 	routes['contact'] = {

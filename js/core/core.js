@@ -15,49 +15,6 @@ var route = null,
 						   			  Page.initialized = false;
 									  Page.callback = callback; 
 									  Page.getDimensions();
-									  
-									  
-									  
-									  
-									  
-									  
-									 /*
-										function s5_icfstartGallery() { 
-												document.getElementById("s5_iacf_content_wrap").style.display = 'block';
-												window.myGallery = new gallery($('myGallery'), {
-														timed: true,
-														showArrows: true,
-														showCarousel: false,
-														showInfopane: true,				
-															
-														delay: 9000,
-															
-															
-															
-																			defaultTransition: "continuousvertical"
-																		});	
-													$('myGallery').addEvent('mouseover',function(){window.myGallery.clearTimer();});
-													$('myGallery').addEvent('mouseout',function(){window.myGallery.prepareTimer();});
-											}
-									function s5_icfstartGalleryload() {
-									s5_icfstartGallery();}
-									window.setTimeout(s5_icfstartGalleryload,400);	*/
-											
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									  
-									
-									  
-									  
-									  
 					  			    }
 					   };
 	routes['contact'] = {

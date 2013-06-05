@@ -12,19 +12,27 @@ var route = null,
 					   page: "index.html", 
 					   setSettings: function(callback){
 						   			  $('.sendbutton').bind('click', SendMessage);
+						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script>");
+						   			  
 						   			  Page.initialized = false;
 									  Page.callback = callback; 
 									  Page.getDimensions();
-									  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script>");
 					  			    }
 					   };
 	routes['contact'] = {
 			           path: "contact", 
 			           page: "contact.html", 
-			           //----------this is default setSettings function
+			           /*----------this is default setSettings function
+					 	  if (callback!=='undefined') 
+					 		    callback();*/
 			           setSettings: function(callback){
-			 					 	  if (callback!=='undefined') 
-							 		    callback();
+			        	   			  $('.sendbutton').bind('click', SendMessage);
+			        	   			  $("#content").append("<script type='text/javascript' src='js/googlemap/map.js'></script>");
+									  initMap();
+					        	      
+									  Page.initialized = false;
+									  Page.callback = callback; 
+									  Page.getDimensions();
 						            }
 	                    };
 //-------------INIT--------------------------------------------------------------------

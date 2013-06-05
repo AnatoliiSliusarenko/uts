@@ -59,7 +59,12 @@ body{
 }
 
 /*---quick contact--*/
-#qcform #response {
+.quickcontact-holder
+{
+	border: 1px solid #999999 !important;
+	box-shadow:0px 0px 10px #999999;
+}
+form #response {
 	font-size:1.2em;
 	margin-left:10px;
 	color: red;
@@ -119,15 +124,15 @@ body{
 	border:0;
 	text-shadow:1px 1px 4px #ffffff;
 	color: #000000;
-	background: url(../img/send.png) 94px 0px no-repeat;
+	background: url(../img/send2.png) 94px 0px no-repeat;
 }
 
 #quickcontact .sendbutton:hover {
 	cursor: pointer;
 	cursor: hand;
-	text-shadow:1px 1px 4px #000000; 
+	text-shadow:0px 1px 7px #000000; 
 	color: #ffffff;
-	background: url(../img/send.png) 94px -18px no-repeat;
+	background: url(../img/send2.png) 92px -19px no-repeat;
 }
 #quickcontact .sendbutton:active
 {
@@ -147,7 +152,7 @@ body{
 
 
 
-.container-item {background-color: #CCCCCC}
+/*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
 	width: 100%;
@@ -175,6 +180,8 @@ body{
 	background:-ms-linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 	background:linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 }
+#globalNavBar li.home {width: 150px;}
+#globalNavBar li.home img {width:100%;margin: 15px 0;}
 #globalNavBar ul{list-style:none;margin:0 auto;padding:0}
 #globalNavBar ul.navRight{float:right}
 #globalNavBar a{font-size:14px;font-size:0.75rem;color:#999;text-decoration:none;display:block;height:46px;letter-spacing:1.5px;border-bottom:4px solid transparent;text-shadow:1px 1px 4px #000;-webkit-transition:all ease .5s;-moz-transition:all ease .5s;transition:all ease .5s;}
@@ -191,4 +198,12 @@ body{
 	width: 38px;
 	height: 38px;
 	position: fixed;
+}
+
+#map-holder
+{
+	border: 1px solid #999999 !important;
+	box-shadow:0px 0px 10px #999999;
+	width: 100%;
+	height: 100%;
 }

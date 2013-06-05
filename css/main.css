@@ -119,7 +119,7 @@ body{
 	border:0;
 	text-shadow:1px 1px 4px #ffffff;
 	color: #000000;
-	background: url(../img/send.png) 94px 0px no-repeat;
+	background: url(../img/send.png) 98px 0px no-repeat;
 }
 
 #quickcontact .sendbutton:hover {
@@ -127,7 +127,7 @@ body{
 	cursor: hand;
 	text-shadow:1px 1px 4px #000000; 
 	color: #ffffff;
-	background: url(../img/send.png) 94px -18px no-repeat;
+	background: url(../img/send.png) 98px -18px no-repeat;
 }
 #quickcontact .sendbutton:active
 {

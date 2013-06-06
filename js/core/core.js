@@ -32,7 +32,7 @@ var route = null,
 					        	      
 									  Page.initialized = false;
 									  Page.callback = callback; 
-									  Page.getDimensions();
+									  Page.getDimensions();									  
 						            }
 	                    };
 //-------------INIT--------------------------------------------------------------------

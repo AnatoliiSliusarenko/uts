@@ -28,10 +28,9 @@ var route = null,
 			           setSettings: function(callback){
 			        	   			  $('.sendbutton').bind('click', SendMessage);
 			        	   			  $("#content").append("<script type='text/javascript' src='js/googlemap/map.js'></script>");
-									  initMap();
 					        	      
 									  Page.initialized = false;
-									  Page.callback = callback; 
+									  Page.callback = function(){callback();initMap();}; 
 									  Page.getDimensions();									  
 						            }
 	                    };

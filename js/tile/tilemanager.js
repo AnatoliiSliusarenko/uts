@@ -101,8 +101,8 @@ var TileLib = {
 					
 					if (plusLeft)
 					{
-						leftItem -= s;
-						widthItem += s; 
+						leftItem -= s-1;
+						widthItem += s-1; 
 					}
 					
 					TweenMax.to($(this), 0, {

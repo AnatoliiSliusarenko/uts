@@ -58,12 +58,16 @@ body{
 	top: 23%;
 }
 
-/*---quick contact--*/
-.quickcontact-holder
+/*----holder----*/
+.holder
 {
 	border: 1px solid #999999 !important;
 	box-shadow:0px 0px 10px #999999;
 }
+/*-------------*/
+
+
+/*---quick contact--*/
 form #response {
 	font-size:1.2em;
 	margin-left:10px;
@@ -139,9 +143,69 @@ form #response {
 	text-shadow:none;
 }
 
+/*------Contact information-----*/
+.contact-information
+{
+	position:relative;
+	float:left;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:5px;
+	width: auto; 
+	height: 250px;
+	font-family: Open Sans Condensed;
+}
+.contact-information-title
+{
+	position:relative;
+	float: left;
+	width: 100%;
+	font-size: 2.5em;
+	text-align: center;	
+	
+}
+.contact-information-details
+{
+	position:relative;
+	float: left;
+	width: auto;
+	margin-top: 10px;
+}
 
-
-
+.contact-information-details p
+{
+	position:relative;
+	float: left;
+	width: 100%;
+	margin-left: 0px;
+	margin-top: 8px;
+	font-family:Arial;/*PT Sans*/
+	font-weight: normal;
+	font-size:24px;
+	color:#444444; 
+	text-align:left;
+}
+.contact-information-details p a
+{
+	position:relative;
+	float: left;	
+	font-family:Arial;/*PT Sans*/
+	font-weight: normal;
+	text-decoration: none;
+	font-size:16px;
+	color:#4c4c4c; 
+	text-align:left;
+}
+.contact-information-details p a:hover
+{
+	font-family:Arial;/*PT Sans*/
+	font-weight: normal;
+	text-decoration: underline;
+	font-size:16px;
+	color:#4c4c4c; 
+	text-align:left;
+}
+/*----------------------------------------*/
 
 
 

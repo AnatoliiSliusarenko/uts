@@ -12,7 +12,7 @@ var route = null,
 					   page: "index.html", 
 					   setSettings: function(callback){
 						   			  $('.sendbutton').bind('click', SendMessage);
-						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script>");
+						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script><script type='text/javascript' src='js/libs/slider/script2.js'></script>");
 						   			  
 						   			  Page.initialized = false;
 									  Page.callback = callback; 

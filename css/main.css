@@ -106,6 +106,7 @@ body{
 .about-container li:before
 {
 	content: "\00BB \0020";
+	color: #000000;
 }
 .about-container li
 {	
@@ -173,6 +174,7 @@ body{
 .text-container ul li:before
 {
 	content: "\00BB \0020";
+	color:#000000;
 }
 
 .text-container ul li

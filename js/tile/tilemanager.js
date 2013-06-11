@@ -24,7 +24,8 @@ var Page = {
 				
 				divs.push({
 					id: $(this).attr('id'),
-					type: $(this).attr('tile-type')
+					type: $(this).attr('tile-type'),
+					priority: $(this).attr('tile-priority') ? $(this).attr('tile-priority') : 'left'
 				});
 			});
 			

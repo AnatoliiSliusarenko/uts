@@ -76,7 +76,7 @@ body{
 }
 .text-holder
 {
-	background-color: #A3FFFF;
+	background-color: #999999;
 	border: 1px solid #999999 !important;
 	box-shadow:0px 0px 10px #999999;
 }
@@ -113,7 +113,7 @@ body{
 	display:inline-block;
 	font-size: 13px;
 	list-style-type: none;
-	color: #737373;
+	color: #999999;
 	font-style: italic;
 	margin-bottom: 10px;
 	vertical-align: top;
@@ -132,6 +132,8 @@ body{
 .text-container span
 {
 	font-weight: bold;
+	color: #00AACD;
+	text-shadow: 1px 1px 3px #000000;
 }
 
 .text-container p
@@ -140,7 +142,7 @@ body{
 	padding-right: 10px;
 	line-height: 22px;
 	font-size: 13px;
-	color: #737373;
+	color: #999999;
 	font-style: italic;
 	text-align: justify;
 }
@@ -150,22 +152,22 @@ body{
 	-webkit-padding-start: 10px;
 }
 
-.text-container ul.inlinelist li:before
+.text-container ol
 {
-	content: "";
+	-webkit-padding-start: 15px;
+	display:block;
+	width: 43%;
+	float:left;
+	margin: 0px;
 }
 
-
-.text-container ul.inlinelist li
+.text-container ol li
 {	
 	font-size: 13px;
-	display:inline-block;
-	list-style-type: decimal inside;
-	color: #737373;
+	color: #3399FF;
 	font-style: italic;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	margin-left: 10px;
-	min-width: 40%;	
 }
 
 .text-container ul li:before
@@ -175,15 +177,16 @@ body{
 
 .text-container ul li
 {	
+	
 	font-size: 13px;
 	list-style-type: none;
-	color: #737373;
+	color: #ffffff;
 	font-style: italic;
 }
 .text-container a
 {
 	text-decoration: none;
-	color: #00AACD;
+	color: #CCFFFF;
 }
 .text-container a:hover
 {

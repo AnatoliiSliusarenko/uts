@@ -53,6 +53,12 @@ function createMatrix($cc, $rc)
 //----sort tiles array by tile horizontal count
 function sortTilesByHC(&$tiles, $types)
 {
+	return true;
+	
+	
+	
+	
+	
 	$sortTiles = array();
 	
 	while ($tiles != array())
@@ -90,6 +96,7 @@ function placeTile($tile, &$matrix, $types, $cc, &$rc)
 	$tileHC = $types[$tileType]['tileHC'];
 	$tileVC = $types[$tileType]['tileVC'];
 	$tileTemplate = $types[$tileType]['template'];
+	$tilePriority = $tile['priority'];
 	
 	//----change matrix row count
 	if ($rc < $tileVC)
@@ -109,9 +116,42 @@ function placeTile($tile, &$matrix, $types, $cc, &$rc)
 	
 	$bufMatrix = createMatrix($tileHC, $tileVC);
 	
-	for ($row=0; $row<=($rc-$tileVC);$row++)
+	
+	switch ($tilePriority)
 	{
-		for ($col=0; $col<=($cc-$tileHC);$col++)
+		case "right":
+			{
+				$startRow = 0;
+				$startCol = ($cc-$tileHC);
+				$finishRow = ($rc-$tileVC)+1;
+				$finishCol = -1;
+				
+				$rowIter = 1;
+				$colIter = -1;
+				
+				break;
+			}
+		default:
+			{
+				$startRow = 0;
+				$startCol = 0;
+				$finishRow = ($rc-$tileVC)+1;
+				$finishCol = ($cc-$tileHC)+1;
+		
+				$rowIter = 1;
+				$colIter = 1;
+		
+				break;
+			}
+	}
+	
+	
+	
+	
+	
+	for ($row=$startRow; $row!=$finishRow;$row=$row+$rowIter)
+	{
+		for ($col=$startCol; $col!=$finishCol;$col=$col+$colIter)
 		{
 			copyMatrix($bufMatrix, 0, 0, $matrix, $col, $row, $tileHC, $tileVC);
 			
@@ -126,6 +166,10 @@ function placeTile($tile, &$matrix, $types, $cc, &$rc)
 			}
 		}	
 	}
+	
+	
+	
+	
 	
 	$rc = $rc + 1;
 	

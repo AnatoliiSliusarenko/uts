@@ -34,6 +34,15 @@ var route = null,
 									  Page.getDimensions();									  
 						            }
 	                    };
+	routes['about'] = {
+					   path: "aboutus", 
+					   page: "aboutus.html", 
+					   setSettings: function(callback){
+						   			  Page.initialized = false;
+									  Page.callback = function(){callback();initLinks();}; 
+									  Page.getDimensions();
+					  			    }
+			   			};
 //-------------INIT--------------------------------------------------------------------
 function initApp()
 {
@@ -41,6 +50,11 @@ function initApp()
 	
 	$("#content-holder").fadeOut('slow', loadContent);
 	
+	initLinks();
+}
+
+function initLinks()
+{
 	$("a.ajax").click(actionClick);
 }
 //------------ADD CLICK LISTENERS------------------------------------------------------

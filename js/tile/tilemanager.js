@@ -140,7 +140,7 @@ var TileLib = {
 
 					if (plusLeft)
 					{
-						leftItem -= s; 
+						leftItem -= s-1; 
 					}
 					
 					TweenMax.to($(this), speed, {

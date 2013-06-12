@@ -341,10 +341,6 @@ form #response {
 
 
 
-
-
-
-
 /*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
@@ -377,6 +373,9 @@ form #response {
 #globalNavBar li.home img {width:100%;margin: 15px 0;}
 #globalNavBar ul{list-style:none;margin:0 auto;padding:0}
 #globalNavBar ul.navRight{float:right}
+#globalNavBar li.minimenu {padding:0; margin:0;width:50px;display:none;}
+#globalNavBar li.minimenu img {display:block;margin-left:12px;margin-top:18px;}
+#globalNavBar li.minimenu a{width: 100%; margin: 0; padding: 0;}
 #globalNavBar a{font-size:14px;font-size:0.75rem;color:#999;text-decoration:none;display:block;height:46px;letter-spacing:1.5px;border-bottom:4px solid transparent;text-shadow:1px 1px 4px #000;-webkit-transition:all ease .5s;-moz-transition:all ease .5s;transition:all ease .5s;}
 #globalNavBar a:hover,#globalNavBar a:focus{color:#fff}
 #globalNavBar li{padding-left:10px;padding-right:10px;height:50px;line-height:50px;float:left;width:100px;text-align:center;box-shadow:-1px -1px 0 0 #000,0px -2px 0 1px #1a1a1a}

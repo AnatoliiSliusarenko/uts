@@ -161,5 +161,6 @@ var tcitems = {
 	"c1r1": {cc: 1, rc:1},
 	"c2r2": {cc: 2, rc:2},
 	"c1r2": {cc: 1, rc:2},
-	"c3r2": {cc: 3, rc:2}
+	"c3r2": {cc: 3, rc:2},
+	"c4r3": {cc: 4, rc:3}
 };

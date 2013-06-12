@@ -51,11 +51,18 @@ function initApp()
 	$("#content-holder").fadeOut('slow', loadContent);
 	
 	initLinks();
+	initMiniMenu();
 }
 
 function initLinks()
 {
 	$("a.ajax").click(actionClick);
+}
+
+function initMiniMenu()
+{
+	$("li.minimenu a").click(miniMenuClick);
+	
 }
 //------------ADD CLICK LISTENERS------------------------------------------------------
 function actionClick()
@@ -63,6 +70,23 @@ function actionClick()
 	$("li").removeClass('active');
 	route = getRoute($(this).attr('href'));
 	$("#content-holder").fadeOut('slow', loadContent);
+	return false;
+}
+
+function miniMenuClick()
+{
+	$("li.mm_item").each(function(){
+		if ($(this).hasClass('show'))
+			{
+				$(this).removeClass('show');
+				$(this).fadeOut('slow');
+			}else
+			{
+				$(this).addClass('show');
+				$(this).fadeIn('slow');
+			}
+	});
+	
 	return false;
 }
 //---------GET ROUTE------------------------------------------------------------------

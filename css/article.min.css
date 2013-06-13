@@ -484,8 +484,8 @@ blockquote.tweet .byline::after{content:"";height:0;width:0;border:3rem solid tr
 .tile-collapsed .profile-photo{left:1px}
 .tile-collapsed.person .tile-copy .img-wrap{left:-1px}
 @media all and (max-width:940px){#globalNavBar li{display:none}
+#globalNavBar ul.miniGroup li{display:block}
 #globalNavBar .mainGroup li:first-child{display:block}
-#globalNavBar .mainGroup li.minimenu{display:block}
 .skinny-nav #globalNavBar li{display:block}
 }
 @media all and (max-width:480px) and (orientation:portrait){.shadow{display:none}

@@ -152,9 +152,6 @@ var TileLib = {
 			}
 		}
 };
-
-//------set listeners------------------------
-window.onresize = Page.getDimensions; 
 //------tile container items-----------------
 var tcitems = {
 	"c2r1": {cc: 2, rc:1},

@@ -23,15 +23,17 @@ var route = null,
 			           path: "contact", 
 			           page: "contact.html", 
 			           /*----------this is default setSettings function
-					 	  if (callback!=='undefined') 
+					 	  if (callback) 
 					 		    callback();*/
 			           setSettings: function(callback){
-			        	   			  $('.sendbutton').bind('click', SendMessage);
+			        	   			  $('#sendbutton').bind('click', SendMessage);
+			        	   			  $('#resetbutton').bind('click', resetFields);
 			        	   			  $("#content").append("<script type='text/javascript' src='js/googlemap/map.js'></script>");
 					        	      
-									  Page.initialized = false;
-									  Page.callback = function(){callback();initMap();}; 
-									  Page.getDimensions();									  
+			        	   			  if (callback) 
+			        	   				  callback();					
+									  
+									  initMap();
 						            }
 	                    };
 	routes['about'] = {
@@ -43,6 +45,14 @@ var route = null,
 									  Page.getDimensions();
 					  			    }
 			   			};
+	routes['partners'] = {
+			   path: "partners", 
+			   page: "ninja.html", 
+			   setSettings: function(callback){
+				   					  if (callback) 
+				   						  callback();
+			  			    }
+			   };
 //-------------INIT--------------------------------------------------------------------
 function initApp()
 {
@@ -83,7 +93,7 @@ function addMiniMenu()
 		if ($('li.minimenu').position().left>0)
 		{	
 			$('li.home').css({position:'absolute'});
-			TweenMax.to($('ul.miniGroup'), 0.5, {top:'-160px'});
+			TweenMax.to($('ul.miniGroup'), 0.5, {left:'-250px'});
 			TweenMax.to($('li.home'), speed, {
 				left: '-250px',
 				onComplete: function(){TweenMax.to($('li.minimenu'), speed, {
@@ -110,12 +120,12 @@ function actionClick()
 
 function miniMenuClick()
 {
-	if($('ul.miniGroup').position().top > 0)
+	if($('ul.miniGroup').position().left < 0)
 	{
-		TweenMax.to($('ul.miniGroup'), 0.5, {top:'-160px'});
+		TweenMax.to($('ul.miniGroup'), 0.5, {left:'0px'});
 	} else
 	{
-		TweenMax.to($('ul.miniGroup'), 0.5, {top:'53px'});
+		TweenMax.to($('ul.miniGroup'), 0.5, {left:'-250px'});
 	}
 	return false;
 }

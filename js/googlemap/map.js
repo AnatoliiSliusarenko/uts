@@ -12,7 +12,7 @@ function initMap(){
         },
         scrollwheel: true,
     	address: $mapHolder.attr("data-address"),
-    	zoom: 4,
+    	zoom: 5,
     	markers:[{
     			latitude: $mapHolder.attr("data-latitude"),
     			longitude: $mapHolder.attr("data-longitude")

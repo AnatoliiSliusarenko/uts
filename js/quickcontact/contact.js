@@ -1,3 +1,26 @@
+function resetFields(event)
+{
+	var $form;
+	
+	if (event.pageX)
+	{
+		$form = $(this).parent();
+	} else
+	{
+		$form = event;
+	}
+	
+	var	$nameInput = $form.find("#nameInput"),
+		$emailInput = $form.find("#emailInput"),
+		$subjectInput = $form.find("#subjectInput"),
+		$messageInput = $form.find("#messageInput");
+	
+	$nameInput.val('');
+	$emailInput.val('');
+	$subjectInput.val('');
+	$messageInput.val('');
+}
+
 function SendMessage()
 {
 	var $form = $(this).parent(),
@@ -38,10 +61,7 @@ function SendMessage()
     	 dataResp = $.parseJSON(dataResp);
     	 if(dataResp.result == true)
     	 {
-    		 $nameInput.val('');
-    		 $emailInput.val('');
-    		 $subjectInput.val('');
-    		 $messageInput.val('');
+    		 resetFields($form);
     		 $response.append(dataResp.msg).fadeIn(2000, function(){$response.fadeOut(2000);});
     	 }else
     		 $response.append(dataResp.msg).fadeIn(2000, function(){$response.fadeOut(2000);});

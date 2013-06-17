@@ -6,48 +6,46 @@
 </head>
 <body>
 	<div id="content">
-		<div id="div1" class="tile container" tile-type="contactbig"  tile-priority="left">
-			<div class="container-item" item-type="c4r3" item-x="0" item-y="0">
-				<div id="map-holder" data-address="Petefi Uzhhorod Ukraine" data-latitude="48.618424" data-longitude="22.298958"></div>
-			</div>
-		</div>	
-	
-		<div id="div2" class="tile container" tile-type="contactbig"  tile-priority="left">
-			<div class="container-item holder" item-type="c4r3" item-x="0" item-y="0">
-				<div id="contact" class="contact">
-					<div class="title">Contact Us</div>
-					<form action="php/sendmessage.php">
-						<input id="nameInput" class="inputbox" type="text" placeholder="Name..."/>
-						<input id="emailInput" class="inputbox" type="text" placeholder="Email..."/>
-						<input id="subjectInput" class="inputbox" type="text" placeholder="Subject..."/>
-						<textarea id="messageInput" class="textareabox" placeholder="Your message..."></textarea>
-						<input class="sendbutton" type="button" value="send message"/> 
-						<div id="response"></div>
-					</form>
-				</div>
-				
-				<div id="contact-information" class="contact">
-                                <div class="contact-information-details">
-                                	<p>                    	
-                                    	  47, Shandora Petefi sq., 
-                                          <br/>
-                                          Uzhhorod, Ukraine 
-                                    </p>
-                                </div>
-                                <div class="contact-information-details">
-                                    <p>                    	
-                                    	   + 38 096 709 86 15 
-                                    </p>
-                                </div>
-                                <div class="contact-information-details">
-                                    <p>                    	
-                                    	   <a href="mailto:info@utradingsystems.com">info@utradingsystems.com</a> 
-                                    </p>
-                                </div>
-                </div>
-			</div>
-		</div>
+		<div id="map-holder" data-address="Petefi Uzhhorod Ukraine" data-latitude="48.618424" data-longitude="22.298958"></div>
 		
+		
+		<div id="contact-container">
+			
+					<div id="contact">
+						<form action="php/sendmessage.php">
+							<input id="nameInput" class="inputbox" type="text" placeholder="Name..."/>
+							<input id="emailInput" class="inputbox" type="text" placeholder="Email..."/>
+							<input id="subjectInput" class="inputbox" type="text" placeholder="Subject..."/>
+							<textarea id="messageInput" class="textareabox" placeholder="Your message..."></textarea>
+							<div id="sendbutton">SEND</div> 
+							<div id="resetbutton">RESET</div>
+							<div id="response"></div>
+						</form>
+					</div>
+			
+			
+			
+					<div id="contact-information">
+	                                <div class="contact-information-details">
+	                                	<p>                    	
+	                                    	  47, Shandora Petefi sq., 
+	                                          <br/>
+	                                          Uzhhorod, Ukraine 
+	                                    </p>
+	                                </div>
+	                                <div class="contact-information-details">
+	                                    <p>                    	
+	                                    	   + 38 096 709 86 15 
+	                                    </p>
+	                                </div>
+	                                <div class="contact-information-details">
+	                                    <p>                    	
+	                                    	   <a href="mailto:info@utradingsystems.com">info@utradingsystems.com</a> 
+	                                    </p>
+	                                </div>
+	                </div>
+			
+		</div>
 	</div>
 </body>
 </html>

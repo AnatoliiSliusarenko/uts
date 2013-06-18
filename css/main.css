@@ -465,8 +465,47 @@ form #response {
 	color:#4c4c4c; 
 	text-align:left;
 }
-/*----------------------------------------*/
+/*------------subMenu--------------------*/
+#partners
+{
+	display: none;
+}
 
+#partners.active
+{
+	display: block;
+}
+
+.subMenu
+{
+	float: right;
+	top: 5px;
+	position: relative;
+	margin:0;
+	padding:0;
+	margin-right: 10px;
+}
+
+.subMenu li
+{
+	display:block;
+	height:auto;
+	line-height: normal;
+	float:left;
+	list-style-type: none;
+	margin-left: 10px;
+}
+.subMenu a
+{
+	font-size:12px;
+	color:#2d2d2d;
+	text-decoration: none;
+}
+.subMenu li.active a{color:#00AACD}
+.subMenu a:hover
+{
+	color: #00AACD;
+}
 
 
 
@@ -475,7 +514,7 @@ form #response {
 /*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
-	top: 10px;
+	top: 20px;
 	display:block;
 	position: absolute;
 	width: 100%;
@@ -485,7 +524,7 @@ form #response {
 }
 #globalNavBar{
 	height:50px;
-	margin-bottom:10px;
+	margin-bottom:0px;
 	line-height:1;
 	font-size:14px;
 	font-size:1.4rem;
@@ -542,9 +581,10 @@ ul.miniGroup li.active a{color:#00AACD}
 
 #globalSubBar
 {
+	top: 50px;
 	display: block;
 	position: absolute;
-	height: 10px;
+	height: 30px;
 	width:100%;
 }
 

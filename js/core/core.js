@@ -45,9 +45,25 @@ var route = null,
 									  Page.getDimensions();
 					  			    }
 			   			};
-	routes['partners'] = {
+	routes['ninja'] = {
 			   path: "partners", 
 			   page: "ninja.html", 
+			   setSettings: function(callback){
+				   					  if (callback) 
+				   						  callback();
+			  			    }
+			   };
+	routes['kinetick'] = {
+			   path: "partners", 
+			   page: "kinetick.html", 
+			   setSettings: function(callback){
+				   					  if (callback) 
+				   						  callback();
+			  			    }
+			   };
+	routes['hybridsolutions'] = {
+			   path: "partners", 
+			   page: "hybridsolutions.html", 
 			   setSettings: function(callback){
 				   					  if (callback) 
 				   						  callback();
@@ -68,6 +84,9 @@ function initLinks()
 {
 	$("a.ajax").click(actionClick);
 	$("li.minimenu a").click(miniMenuClick);
+	
+	$("a.menu").on('mouseenter mouseleave', focusSubMenu);
+	$("ul.subMenu").on('mouseenter mouseleave', focusSubMenu);
 }
 
 function addMiniMenu()
@@ -109,10 +128,43 @@ function addMiniMenu()
 
 //------------ADD LISTENERS------------------------------------------------------
 window.onresize = function(){Page.getDimensions();addMiniMenu();}; 
+var tmID;
+function focusSubMenu(event)
+{	
+	clearTimeout(tmID);
+	switch (event.type)
+	{
+		case 'mouseenter': 
+			{
+				if ($(this).is('a'))
+				{
+					var $subMenu = $("#"+$(this).attr('menu-holder'));
+					
+					$subMenu.fadeIn('normal');
+				}
+				break;
+			}
+		case 'mouseleave':
+			{
+				if ($(this).is('a'))
+				{
+					var $subMenu = $("#"+$(this).attr('menu-holder'));
+					if ($subMenu.hasClass('active') == false)
+						tmID = setTimeout(function(){$subMenu.fadeOut('normal')}, 500);
+				}else
+				{
+					if ($(this).hasClass('active') == false)
+						$(this).fadeOut('normal');
+				}
+				break;
+			}
+	}
+}
 
 function actionClick()
 {
 	$("li").removeClass('active');
+	$("ul").removeClass('active');
 	route = getRoute($(this).attr('href'));
 	$("#content-holder").fadeOut('slow', loadContent);
 	return false;
@@ -132,17 +184,34 @@ function miniMenuClick()
 //---------GET ROUTE------------------------------------------------------------------
 function getRoute(routeName)
 {
-	var uri = routeName.replace("#", "");
+	var uri = routeName.replace("#", ""),
+		$link,$list;
 	
 	if (typeof routes[uri] === "object")
 	{
 		window.location.hash = "#"+uri;
-		$("li a.ajax[href='"+window.location.hash+"']").parent().addClass('active');
+		$link = $("li a.ajax[href='"+window.location.hash+"']");
+		$link.parent().addClass('active');
+		$list = $link.parent().parent();
+		if ($list.hasClass('subMenu'))
+		{
+			$list.addClass('active');
+			
+			
+		}
+		
 		return routes[uri];
 	}
 	
 	window.location.hash = "#"+baseRoute;
-	$("li a.ajax[href='"+window.location.hash+"']").parent().addClass('active');
+	$link = $("li a.ajax[href='"+window.location.hash+"']");
+	$link.parent().addClass('active');
+	$list = $link.parent().parent();
+	if ($list.hasClass('subMenu'))
+	{
+		$list.addClass('active');
+		
+	}
 	return routes[baseRoute];
 }
 //----------LOAD CONTENT--------------------------------------------------------------

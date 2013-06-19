@@ -13,8 +13,8 @@ body{
 .tile.single {background-color: #897970}
 
 /*----twitter-----*/
-.tile.twitter {background-color: #365D9E}
-.tile.twitter:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
+.twitter {background-color: #365D9E; display: block; width: 100%; height: 100%;}
+.twitter:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
 .twitter a {
 	display: block;
 	width: 100%;
@@ -28,8 +28,8 @@ body{
 	top: 23%;
 } 	
 /*----facebook-----*/
-.tile.facebook {background-color: #365D9E}
-.tile.facebook:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
+.facebook {background-color: #365D9E; display: block; width: 100%; height: 100%;}
+.facebook:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
 .facebook a {
 	display: block;
 	width: 100%;
@@ -43,8 +43,8 @@ body{
 	top: 23%;
 }
 /*----linkedin-----*/
-.tile.linkedin {background-color: #365D9E}
-.tile.linkedin:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
+.linkedin {background-color: #365D9E; display: block; width: 100%; height: 100%;}
+.linkedin:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
 .linkedin a {
 	display: block;
 	width: 100%;
@@ -89,7 +89,7 @@ body{
 {
 	position: absolute;
 	display: block;
-	width: 98.5%;
+	width: 99%;
 	padding-left: 0px;
 	padding-top: 10px;
 	margin-top: 5px;
@@ -130,6 +130,30 @@ body{
 	text-align: justify;
 }
 /*----------------------*/
+/*----partners-holder----*/
+.partners-holder
+{
+	background-color: #ffffff;
+	border: 1px solid #E0E0E0 !important;
+}
+.partners-holder img
+{
+	margin-left: 7px;
+	width: 95%;
+	height: auto;
+}
+.partners-holder h3
+{
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 0px;
+	margin-bottom: 20px;
+	color: #365D9E;
+	dosplay: block;
+	position: relative;
+	width: 100%;
+}
 /*-----text-container------*/
 .text-container
 {
@@ -246,6 +270,7 @@ form #response {
 	font-size: 2.2em;
 	text-align: right;
 	padding: 10px;
+	color:#365D9E;
 }
 #quickcontact .inputbox {
 	color: #000000;
@@ -286,8 +311,8 @@ form #response {
 	float:right;
 	border:0;
 	text-shadow:1px 1px 4px #ffffff;
-	color: #000000;
-	background: url(../img/send2.png) 94px 0px no-repeat;
+	color: #365D9E;
+	background: url(../img/send3.png) 94px 0px no-repeat;
 }
 
 #quickcontact .sendbutton:hover {
@@ -562,8 +587,8 @@ form #response {
 	position: absolute;
 	width: 100%;
 	position: relative;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 5px;
+	margin-right: 0px;
 }
 #globalNavBar{
 	height:50px;
@@ -648,7 +673,7 @@ ul.miniGroup li.active a{color:#365D9E}
 	border: 1px solid #E0E0E0 !important;
 	/*box-shadow:0px 0px 10px #999999;*/
 	margin-bottom: 0px;
-	width: 98.5%;
+	width: 99%;
 	height: 300px;
 	top:0px;
 	left:0px;

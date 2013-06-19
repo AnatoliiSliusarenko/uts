@@ -8,7 +8,7 @@ $mainTypes = array(
 	'bigsquare' => array('tiles' => 4, 'tileHC' => 2, 'tileVC' => 2, 'template' => array(0 => array(1, 1), 1 => array(1,1))),
 	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0))),
 	'bighorsquare' => array('tiles' => 6, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 1))),
-	'contactbig' => array('tiles' => 12, 'tileHC' => 4,  'tileVC' => 3, 'template' => array(0 => array(1, 1, 1, 1), 1 => array(1, 1, 1, 1), 2 => array(1, 1, 1, 1)))
+	'longbighorsquare' => array('tiles' => 8, 'tileHC' => 4,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1, 1), 1 => array(1, 1, 1, 1)))
 );
 //------Recieved------------------------------------------------------------------------------------------------------------------
 $contentTiles = isset($_GET['tiles']) ? $_GET['tiles'] : array();

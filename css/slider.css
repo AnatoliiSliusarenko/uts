@@ -339,10 +339,10 @@
 	background-position: 0 0; 
 }
 #wowslider-container2 a.ws_next:hover{
-	background-color: #00AACD;
+	background-color: #E6E6E6;
 }
 #wowslider-container2 a.ws_prev:hover {
-	background-color: #00AACD; 
+	background-color: #E6E6E6; 
 }
 * html #wowslider-container2 a.ws_next,* html #wowslider-container2 a.ws_prev{display:block}
 #wowslider-container2:hover a.ws_next, #wowslider-container2:hover a.ws_prev {display:block} /* bottom center */

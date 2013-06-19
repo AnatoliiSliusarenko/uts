@@ -166,6 +166,7 @@ function actionClick()
 	$("li").removeClass('active');
 	$("ul").removeClass('active');
 	route = getRoute($(this).attr('href'));
+	
 	$("#content-holder").fadeOut('slow', loadContent);
 	return false;
 }
@@ -184,34 +185,17 @@ function miniMenuClick()
 //---------GET ROUTE------------------------------------------------------------------
 function getRoute(routeName)
 {
-	var uri = routeName.replace("#", ""),
-		$link,$list;
+	var uri = routeName.replace("#", "");
 	
 	if (typeof routes[uri] === "object")
 	{
 		window.location.hash = "#"+uri;
-		$link = $("li a.ajax[href='"+window.location.hash+"']");
-		$link.parent().addClass('active');
-		$list = $link.parent().parent();
-		if ($list.hasClass('subMenu'))
-		{
-			$list.addClass('active');
-			
-			
-		}
-		
+		decorateLinks(uri);
 		return routes[uri];
 	}
 	
 	window.location.hash = "#"+baseRoute;
-	$link = $("li a.ajax[href='"+window.location.hash+"']");
-	$link.parent().addClass('active');
-	$list = $link.parent().parent();
-	if ($list.hasClass('subMenu'))
-	{
-		$list.addClass('active');
-		
-	}
+	decorateLinks(baseRoute);
 	return routes[baseRoute];
 }
 //----------LOAD CONTENT--------------------------------------------------------------
@@ -240,4 +224,20 @@ function afterLoadContent(response, status, xhr)
 			}
 			break;		
 	}	
+}
+//-------DECORATE LINKS---------------
+function decorateLinks()
+{
+	var $link = $("li a.ajax[href='"+window.location.hash+"']");
+	$link.parent().addClass('active');
+	
+	var $list = $link.parent().parent();
+	if ($list.hasClass('subMenu'))
+	{
+		$list.addClass('active');
+		$("li a.menu[menu-holder='"+$list.attr('id')+"']").parent().addClass('active');
+	}else
+	{
+		$("ul.subMenu").fadeOut('normal');
+	}
 }

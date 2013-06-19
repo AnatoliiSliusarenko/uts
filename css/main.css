@@ -465,6 +465,21 @@ form #response {
 	color:#4c4c4c; 
 	text-align:left;
 }
+/*----------PARTNERS-------------*/
+#partners-container
+{
+	position:relative;
+	display: block;
+	width: 100%;
+	height: auto;
+}
+#partners-container img
+{
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #E0E0E0;
+	box-shadow: 2px 2px 3px #E0E0E0;
+}
 /*------------subMenu--------------------*/
 #partners
 {

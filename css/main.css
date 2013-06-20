@@ -14,11 +14,12 @@ body{
 
 /*-----social----*/
  #socialmedia {
+ 		z-index:101;
  		position: absolute;
  		top: 0px;
 		width: 78px;
 		right: 20px;
-		margin-top:5px;
+		margin-top:0px;
 	}
 	
 #socialmedia a .fb , #socialmedia a .twitter, #socialmedia a .linkedin  {
@@ -643,7 +644,7 @@ form #response {
 /*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
-	top: 50px;
+	top: 25px;
 	display:block;
 	width: 100%;
 	height:100%;
@@ -653,7 +654,7 @@ form #response {
 }
 #globalNavBar{
 	height:50px;
-	margin-top: 30px;
+	margin-top: 5px;
 	margin-bottom:0px;
 	line-height:1;
 	font-size:14px;
@@ -674,7 +675,7 @@ form #response {
 	background:-ms-linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 	background:linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);*/
 }
-ul.miniGroup {display:block;position:absolute;top:83px; left:-250px; z-index:99 !important;padding:0; margin:0;}
+ul.miniGroup {display:block;position:absolute;top:58px; left:-250px; z-index:99 !important;padding:0; margin:0;}
 ul.miniGroup li:first-child {width:200px;}
 ul.miniGroup li {margin-bottom:0px; width:200px !important;position:relative;display:block;float:none !important;
 background-color:rgba(255,255,255,0.9);
@@ -711,7 +712,7 @@ ul.miniGroup li.active a{color:#365D9E}
 
 #globalSubBar
 {
-	top: 80px;
+	top: 55px;
 	display: block;
 	position: absolute;
 	height: 30px;

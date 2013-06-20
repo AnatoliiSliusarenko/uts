@@ -12,6 +12,52 @@ body{
 }
 .tile.single {background-color: #897970}
 
+/*-----social----*/
+ #socialmedia {
+ 		position: absolute;
+ 		top: 0px;
+		width: 78px;
+		right: 20px;
+		margin-top:5px;
+	}
+	
+#socialmedia a .fb , #socialmedia a .twitter, #socialmedia a .linkedin  {
+		width: 24px;
+		height: 24px;
+		margin-right: 2px;
+		-webkit-transition: all 300ms linear;
+		-moz-transition: all 300ms linear;
+		-o-transition: all 300ms linear;
+		-ms-transition: all 300ms linear;
+		transition: all 300ms linear;
+		float: left; 	
+	}
+	
+#socialmedia .fb {
+		background: url(../img/social/fb-icon.gif) no-repeat top;
+	}
+	
+#socialmedia .fb:hover {
+		background: url(../img/social/fb-icon.gif) no-repeat bottom;
+	}
+	
+#socialmedia .twitter {
+		background: url(../img/social/twitter-icon.gif) no-repeat top;
+	}
+	
+#socialmedia .twitter:hover {
+		background: url(../img/social/twitter-icon.gif) no-repeat bottom;
+	}
+	
+#socialmedia .linkedin {
+		background: url(../img/social/linkedin-icon.gif) no-repeat top;
+	}
+	
+#socialmedia .linkedin:hover {
+		background: url(../img/social/linkedin-icon.gif) no-repeat bottom;
+	}
+/*---------------*/
+
 /*----twitter-----*/
 .twitter {background-color: #365D9E; display: block; width: 100%; height: 100%;}
 .twitter:hover {background-color: #5E7DB1; cursor:pointer; cursor:hand;}
@@ -295,8 +341,8 @@ form #response {
 	padding: 7px;
 	margin:0 auto;
 	margin-bottom: 5px;
-	height: 125px;
-	max-height:125px;
+	height: 115px;
+	max-height:115px;
 	border:1px solid #999999;
 }
 
@@ -304,27 +350,42 @@ form #response {
 	border:solid 1px #666666;
 }
 
-#quickcontact .sendbutton {
+#quickcontact #sendbutton {
 	margin-right:7px;
-	padding-right:20px;
+	margin-left:3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left:10px;
+	padding-right:5px;
+	width: 40px;
+	max-width: 40px;
 	background: transparent;
 	float:right;
-	border:0;
-	text-shadow:1px 1px 4px #ffffff;
-	color: #365D9E;
-	background: url(../img/send3.png) 94px 0px no-repeat;
+	color: #FFFFFF;
+	background-color: rgb(63, 63, 63);
 }
 
-#quickcontact .sendbutton:hover {
+#quickcontact #sendbutton:hover {
 	cursor: pointer;
 	cursor: hand;
-	text-shadow:0px 1px 7px #000000; 
-	color: #ffffff;
-	background: url(../img/send2.png) 92px -19px no-repeat;
+	background-color: #234163;
 }
-#quickcontact .sendbutton:active
-{
-	text-shadow:none;
+
+#quickcontact #resetbutton {
+	margin-left:3px;
+	padding: 5px 10px;
+	width: 40px;
+	max-width:40px;
+	background: transparent;
+	float:right;
+	color: #FFFFFF;
+	background-color: rgb(63, 63, 63);
+}
+
+#quickcontact #resetbutton:hover {
+	cursor: pointer;
+	cursor: hand;
+	background-color: #234163;
 }
 /*---contact---*/
 form #response {
@@ -582,16 +643,17 @@ form #response {
 /*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
-	top: 20px;
+	top: 50px;
 	display:block;
-	position: absolute;
 	width: 100%;
+	height:100%;
 	position: relative;
 	margin-left: 5px;
 	margin-right: 0px;
 }
 #globalNavBar{
 	height:50px;
+	margin-top: 30px;
 	margin-bottom:0px;
 	line-height:1;
 	font-size:14px;
@@ -612,7 +674,7 @@ form #response {
 	background:-ms-linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);
 	background:linear-gradient(top,#2e2e2e 0,#151515 45%,#020202 50%);*/
 }
-ul.miniGroup {display:block;position:absolute;top:53px; left:-250px; z-index:99 !important;padding:0; margin:0;}
+ul.miniGroup {display:block;position:absolute;top:83px; left:-250px; z-index:99 !important;padding:0; margin:0;}
 ul.miniGroup li:first-child {width:200px;}
 ul.miniGroup li {margin-bottom:0px; width:200px !important;position:relative;display:block;float:none !important;
 background-color:rgba(255,255,255,0.9);
@@ -649,7 +711,7 @@ ul.miniGroup li.active a{color:#365D9E}
 
 #globalSubBar
 {
-	top: 50px;
+	top: 80px;
 	display: block;
 	position: absolute;
 	height: 30px;
@@ -670,11 +732,12 @@ ul.miniGroup li.active a{color:#365D9E}
 
 #map-holder
 {
+	display:block;
+	position:relative;
 	border: 1px solid #E0E0E0 !important;
 	/*box-shadow:0px 0px 10px #999999;*/
 	margin-bottom: 0px;
 	width: 99%;
-	height: 300px;
 	top:0px;
 	left:0px;
 }

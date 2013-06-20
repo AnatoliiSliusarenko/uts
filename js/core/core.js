@@ -11,7 +11,8 @@ var route = null,
 					   path: "index", 
 					   page: "index.html", 
 					   setSettings: function(callback){
-						   			  $('.sendbutton').bind('click', SendMessage);
+						   			  $('#sendbutton').bind('click', SendMessage);
+						   			  $('#resetbutton').bind('click', resetFields);
 						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script><script type='text/javascript' src='js/libs/slider/script2.js'></script>");
 						   			  
 						   			  Page.initialized = false;
@@ -127,7 +128,7 @@ function addMiniMenu()
 }
 
 //------------ADD LISTENERS------------------------------------------------------
-window.onresize = function(){Page.getDimensions();addMiniMenu();}; 
+window.onresize = function(){Page.getDimensions();addMiniMenu();resizeMap();}; 
 var tmID;
 function focusSubMenu(event)
 {	

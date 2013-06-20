@@ -19,4 +19,10 @@ function initMap(){
    		}]
     });  
 		 
+	resizeMap();
+}
+
+function resizeMap()
+{
+	TweenMax.to($('#map-holder'), 1, {height:window.innerHeight*0.4+"px"});
 }

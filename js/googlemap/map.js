@@ -1,4 +1,5 @@
 function initMap(){
+	resizeMap();
 	var $mapHolder = $("#map-holder");
 	$mapHolder.empty();
 	$mapHolder.gMap({
@@ -18,8 +19,6 @@ function initMap(){
     			longitude: $mapHolder.attr("data-longitude")
    		}]
     });  
-		 
-	resizeMap();
 }
 
 function resizeMap()

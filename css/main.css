@@ -33,8 +33,8 @@ body{
 	}
 	
 #socialmedia .fb {
-		bottom: 0px;
-		left:0px;
+		bottom: 15px;
+		left:15px;
 		background: url(../img/social/f.png) no-repeat top;
 	}
 	
@@ -43,8 +43,8 @@ body{
 	}
 	
 #socialmedia .twitter {
-		top: 0px;
-		right: 0px;
+		top: 15px;
+		right: 15px;
 		background: url(../img/social/t.png) no-repeat top;
 	}
 	
@@ -53,8 +53,8 @@ body{
 	}
 	
 #socialmedia .linkedin {
-		right:0px;
-		bottom: 0px;
+		right:15px;
+		bottom: 15px;
 		background: url(../img/social/in.png) no-repeat top;
 	}
 	
@@ -62,8 +62,8 @@ body{
 		background: url(../img/social/in.png) no-repeat bottom;
 	}
 #socialmedia .google {
-		top:0px;
-		left: 0px;
+		top:15px;
+		left: 15px;
 		background: url(../img/social/g.png) no-repeat top;
 	}
 	
@@ -167,23 +167,25 @@ body{
 	font-size: 18px;
 	padding-left: 45px;
 	font-weight: bold;
+	color: #365D9E;
 }
 
 .about-container ul
 {
 	-webkit-padding-start: 10px;
+	float: left;
 }
 .about-container li
 {	
 	background: url("../img/li.gif") no-repeat scroll left 6px transparent;
 	padding-left: 7px;
-	width: 45%;
+	width: 200px;
 	font: normal 12px Tahoma;
 	font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
-	display:inline-block;
+	display:block;
 	list-style-type: none;
 	color: #234163;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	vertical-align: top;
 	margin-left: 15px;
 	line-height: 17px;
@@ -257,9 +259,9 @@ body{
 .text-container ol li
 {	
 	font-size: 13px;
-	color: #365D9E;
+	color: #234163;
 	font-style: italic;
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 	margin-left: 10px;
 }
 
@@ -609,6 +611,7 @@ form #response {
 	text-align: justify;
 }
 /*------------subMenu--------------------*/
+@media all and (max-width:940px){.subMenu{right:0px !important;}}
 #partners
 {
 	display: none;
@@ -623,6 +626,7 @@ form #response {
 {
 	float: right;
 	top: 5px;
+	right: 123px;
 	position: relative;
 	margin:0;
 	padding:0;

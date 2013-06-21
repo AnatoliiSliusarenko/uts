@@ -31,7 +31,7 @@ var Page = {
 			
 			var dataTiles = {
 				tiles: divs,
-				windowWidth: $("#content-holder").width()//1366//
+				windowWidth: 1366//$("#content-holder").width()
 			};
 			
 			return dataTiles;

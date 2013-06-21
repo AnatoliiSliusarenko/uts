@@ -13,7 +13,7 @@ var route = null,
 					   setSettings: function(callback){
 						   			  $('#sendbutton').bind('click', SendMessage);
 						   			  $('#resetbutton').bind('click', resetFields);
-						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script><script type='text/javascript' src='js/libs/slider/script2.js'></script>");
+						   			  $("#content").append("<script type='text/javascript' src='js/libs/slider/wowslider.js'></script><script type='text/javascript' src='js/libs/slider/script.js'></script>");
 						   			  
 						   			  Page.initialized = false;
 									  Page.callback = callback; 
@@ -30,11 +30,12 @@ var route = null,
 			        	   			  $('#sendbutton').bind('click', SendMessage);
 			        	   			  $('#resetbutton').bind('click', resetFields);
 			        	   			  $("#content").append("<script type='text/javascript' src='js/googlemap/map.js'></script>");
-					        	      
+			        	   			  
 			        	   			  if (callback) 
 			        	   				  callback();					
-									  
-									  initMap();
+			        	   			  resizeMap();
+			        	   
+									  setTimeout(function(){initMap();}, 1000);
 						            }
 	                    };
 	routes['about'] = {
@@ -128,7 +129,7 @@ function addMiniMenu()
 }
 
 //------------ADD LISTENERS------------------------------------------------------
-window.onresize = function(){Page.getDimensions();addMiniMenu();resizeMap();}; 
+window.onresize = function(){/*Page.getDimensions();*/addMiniMenu();resizeMap();}; 
 var tmID;
 function focusSubMenu(event)
 {	
@@ -140,7 +141,6 @@ function focusSubMenu(event)
 				if ($(this).is('a'))
 				{
 					var $subMenu = $("#"+$(this).attr('menu-holder'));
-					
 					$subMenu.fadeIn('normal');
 				}
 				break;

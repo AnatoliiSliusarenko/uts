@@ -164,8 +164,10 @@ body{
 }
 .about-container span
 {
+	display: block;
+	width: 100%;
+	text-align: center;
 	font-size: 18px;
-	padding-left: 45px;
 	font-weight: bold;
 	color: #365D9E;
 }
@@ -179,13 +181,13 @@ body{
 {	
 	background: url("../img/li.gif") no-repeat scroll left 6px transparent;
 	padding-left: 7px;
-	width: 200px;
+	width: 280px;
 	font: normal 12px Tahoma;
 	font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
 	display:block;
 	list-style-type: none;
 	color: #234163;
-	margin-bottom: 0px;
+	margin-bottom: 5px;
 	vertical-align: top;
 	margin-left: 15px;
 	line-height: 17px;
@@ -258,7 +260,8 @@ body{
 
 .text-container ol li
 {	
-	font-size: 13px;
+	font: normal 12px Tahoma;
+	font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
 	color: #234163;
 	font-style: italic;
 	margin-bottom: 2px;
@@ -274,6 +277,7 @@ body{
 	list-style-type: none;
 	color: #234163;
 	text-align: left;
+	margin-bottom: 5px;
 }
 .text-container a
 {
@@ -662,12 +666,12 @@ form #response {
 #content-holder
 {
 	top: 20px;
+	left: 5px;
 	display:block;
-	width: 100%;
+	width: 1366px;
 	height:100%;
 	position: relative;
-	margin-left: 5px;
-	margin-right: 0px;
+	margin: 10px auto;
 }
 #globalNavBar{
 	height:50px;

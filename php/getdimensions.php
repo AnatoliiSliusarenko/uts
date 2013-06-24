@@ -9,7 +9,7 @@ $mainTypes = array(
 	'bigsquare-square' => array('tiles' => 5, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 0))),
 	'bighorsquare' => array('tiles' => 6, 'tileHC' => 3,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1), 1 => array(1, 1, 1))),
 	'longbighorsquare' => array('tiles' => 8, 'tileHC' => 4,  'tileVC' => 2, 'template' => array(0 => array(1, 1, 1, 1), 1 => array(1, 1, 1, 1))),
-	'longvert' => array('tiles' => 3, 'tileHC' => 1,  'tileVC' => 3, 'template' => array(0 => array(1), 1 => array(1), 2 => array(1)))
+	'longverbig' => array('tiles' => 12, 'tileHC' => 4,  'tileVC' => 3, 'template' => array(0 => array(1, 1, 1, 1), 1 => array(1, 1, 1, 1), 2 => array(1, 1, 1, 1)))
 );
 //------Recieved------------------------------------------------------------------------------------------------------------------
 $contentTiles = isset($_GET['tiles']) ? $_GET['tiles'] : array();

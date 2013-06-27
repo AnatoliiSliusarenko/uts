@@ -631,6 +631,7 @@ form #response {
 	margin:0;
 	padding:0;
 	margin-right: 10px;
+
 }
 
 .subMenu li
@@ -661,7 +662,6 @@ form #response {
 /*.container-item {background-color: #CCCCCC}*/
 #content-holder
 {
-	top: 20px;
 	left: 5px;
 	display:block;
 	width: 1366px;
@@ -731,11 +731,13 @@ ul.miniGroup li.active a{color:#365D9E}
 
 #globalSubBar
 {
-	top: 50px;
+	/*top: 50px;*/
 	display: block;
-	position: absolute;
+	position: relative;
 	height: 30px;
 	width:100%;
+	max-width:1366px;
+	margin:0 auto;
 }
 
 
